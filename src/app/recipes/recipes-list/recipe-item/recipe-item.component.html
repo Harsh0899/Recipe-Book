@@ -1,0 +1,9 @@
+<a [routerLink]=[index] style="cursor: pointer;" class="list-group-item clearfix" (click)="recipeClick()">
+    <div class="pull-left">
+        <h4>{{ recipe.name }}</h4>
+        <p>{{ recipe.desc }}</p>
+    </div>
+    <span class="pull-right">
+        <img [src]="recipe.url" [alt]="recipe.name" class="img-responsive" style="max-height: 50px;">
+    </span>
+</a>
