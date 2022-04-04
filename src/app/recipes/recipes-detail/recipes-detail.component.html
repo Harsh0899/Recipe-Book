@@ -21,15 +21,10 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a style="cursor: pointer" (click)="onAddToList()">Add to Shopping List</a></li>
-                <li><a style="cursor: pointer">Edit Recipe</a></li>
-                <li><a style="cursor: pointer">Delete Recipe</a></li>
+                <li><a routerLink="edit" style="cursor: pointer">Edit Recipe</a></li>
+                <li><a style="cursor: pointer" (click)="onDelete()">Delete Recipe</a></li>
             </ul>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        {{ RecipeDisplay.name }}
     </div>
 </div>
 <div class="row">
