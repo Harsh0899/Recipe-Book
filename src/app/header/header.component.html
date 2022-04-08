@@ -6,15 +6,19 @@
         
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a routerLinkActive="active" routerLink="recipes" class="nav-link">Recipes</a></li>
+                <li><a routerLinkActive="active" routerLink="recipes" class="nav-link" *ngIf="isUserAuthenticated">Recipes</a></li>
+                <li><a routerLinkActive="active" routerLink="auth" class="nav-link" *ngIf="!isUserAuthenticated">Authentication</a></li>
                 <li><a routerLinkActive="active" routerLink="shopping-list" class="nav-link">Shopping List</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" *ngIf="isUserAuthenticated">
+                <li>
+                    <a style="cursor: pointer" (click)="onLogout()">Logout</a>
+                </li>
                 <li class="dropdown" appDropdown>
                     <a style="cursor: pointer" class="dropdown-toggle nav-link" role="button">Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer">Fetch Data</a></li>
-                        <li><a style="cursor: pointer">Save Data</a></li>
+                        <li><a style="cursor: pointer" (click)="onFetch()">Fetch Data</a></li>
+                        <li><a style="cursor: pointer" (click)="onSave()">Save Data</a></li>
                     </ul>
                 </li>
             </ul>

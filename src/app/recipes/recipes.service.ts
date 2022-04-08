@@ -7,30 +7,7 @@ import { Recipe } from "./recipe.model";
 export class RecipesService {
     recipeList = new EventEmitter<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            'Burger and Fries', 
-            'A Delicous meal for the afternoon', 
-            'https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?size=626&ext=jpg',
-            [
-                new Ingredient('Bun', 2),
-                new Ingredient('Chicken Patty', 1),
-                new Ingredient('lettuce', 2),
-                new Ingredient('Fries', 50)
-            ]
-        ),
-        new Recipe(
-            'Pizza', 
-            'Authentic Italian', 
-            'https://www.youngisthan.in/wp-content/uploads/2016/04/Pizza-unhealthy-food-1280x720.jpg',
-            [
-                new Ingredient('Pizza Base', 2),
-                new Ingredient('Cheese Block', 1),
-                new Ingredient('Pepperoni', 10),
-                new Ingredient('Tomato Sauce', 1)
-            ]
-        )
-    ];
+    private recipes: Recipe[] = [];
 
     constructor(private shoppingService: ShoppingListService) {}
 
@@ -58,6 +35,11 @@ export class RecipesService {
 
     deleteRecipe(index: number) {
         this.recipes.splice(index, 1);
+        this.recipeList.emit(this.recipes);
+    }
+
+    setRecipe(recipes: Recipe[]) {
+        this.recipes = recipes;
         this.recipeList.emit(this.recipes);
     }
 }
